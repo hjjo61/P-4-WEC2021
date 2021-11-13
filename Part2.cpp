@@ -4,8 +4,10 @@
 #include <string>
 #include <stdio.h>
 #include <cctype>
+#include <limits>
 
-
+double wordTime[10]{-1};
+std::string words[10];
 int buttonMap[] = {2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 9, 9, 9, 9};
 double buttonDelay[] = {0, 0.25, 0.50, 0, 0.25, 0.50, 0, 0.25, 0.50,0, 0.25, 0.50,0, 0.25, 0.50,0, 0.25, 0.50, 0.75, 0, 0.25, 0.50, 0, 0.25, 0.50, 0.75};
 double buttonBDelay[] = {0.75, 0.5, 0.25, 0.75, 0.5, 0.25, 0.75, 0.5, 0.25, 0.75, 0.5, 0.25, 0.75, 0.5, 0.25, 0.75, 0.75, 0.5, 0.25, 0.75, 0.5, 0.25, 0.75, 0.75, 0.5, 0.25}; 
@@ -41,6 +43,8 @@ double timeForLetter(char letter, char previousLetter){
 
 int main () {
     std::string line;
+    int counter = 0;
+    double min = std::numeric_limits<double>::max();
     char previousLetter = '\0';
     double time = 0;
     std::ifstream myfile;
@@ -56,6 +60,19 @@ int main () {
                 previousLetter = line[i];
             }
             std::cout << line << " -> " << time << std::endl;
+            words[counter] = line;
+            wordTime[counter] = time;
+            counter++;
+            if (time < min){
+                min = time;
+            }
+        }
+
+        std::cout << std::endl << "The fastest word(s) are:" << std::endl;
+        for (int i = 0; i < int(counter); i++){
+            if (wordTime[i] == min){
+                std::cout << words[i] << " with time of " << min << " seconds." << std::endl;
+            }
         }
 
         myfile.close();
