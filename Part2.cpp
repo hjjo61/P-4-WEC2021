@@ -68,10 +68,10 @@ int main () {
             }
         }
 
-        std::cout << std::endl << "The fastest word(s) are:" << std::endl;
+        std::cout << std::endl << "The fastest word(s) is(are):" << std::endl;
         for (int i = 0; i < int(counter); i++){
             if (wordTime[i] == min){
-                std::cout << words[i] << " with time of " << min << " seconds." << std::endl;
+                std::cout << words[i] << " with time of " << min << " second(s)." << std::endl;
             }
         }
 
