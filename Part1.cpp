@@ -36,10 +36,10 @@ int main () {
     myfile.open ("PACKAGE/Test1.txt");
 
     if(myfile.is_open()){
-        while (myfile >> line){
+        while (myfile >> line){ //Read Each Word In, and Calculate Time for each word
             previousLetter = '\0';
             time = 0;
-            for (int i = 0; i<line.size(); i++){
+            for (int i = 0; i<line.size(); i++){ // Read Each Letter and Calculate Time for Each Letter
                 time += timeForLetter(line[i], previousLetter);
                 previousLetter = line[i];
             }

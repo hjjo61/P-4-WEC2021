@@ -47,11 +47,11 @@ int main () {
     myfile.open ("PACKAGE/Part2.txt");
 
     if(myfile.is_open()){
-        myfile >> buttonBroke;
-        while (myfile >> line){
+        myfile >> buttonBroke; //Read which button is broken
+        while (myfile >> line){ //Read each word in and calculate the time
             previousLetter = '\0';
             time = 0;
-            for (int i = 0; i<line.size(); i++){
+            for (int i = 0; i<line.size(); i++){ //Read each letter and calculate the time
                 time += timeForLetter(line[i], previousLetter);
                 previousLetter = line[i];
             }
