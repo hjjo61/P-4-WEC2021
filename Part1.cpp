@@ -20,13 +20,10 @@ double timeForLetter(char letter, char previousLetter){
 
     if (previousLetter != '\0' && buttonMap[int(tolower(previousLetter))-97] == buttonMap[int(letter)-97]){ 
         time += 0.5; // If its the same button cluster, then 0.5 sec
-    }else{
+    }else if (previousLetter!='\0'){
         time += 0.25; //If its a new button cluster, then only 0.25 sec
-    }
+    } // If this was the first button press, no first press delay
 
-    if (previousLetter == '\0'){ // If first letter, then no first button delay.
-        time -= 0.25; 
-    }
     return time;
 }
 
